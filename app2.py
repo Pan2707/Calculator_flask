@@ -1,19 +1,20 @@
-from flask import Flask, render_template request, jsonify
-import json
+from flask import Flask, request # import statememt where we import Flask
+
 
 
 obj = Flask(__name__)
 
 
-
+#creating a home route 
 @obj.route('/')
 def welcome():
     return 'Welcome'
 
-#code for calculator
+
+#creating a main route  for calculator
 @obj.route('/cal', methods=['GET'])
 def math_operator():
-    operation = request.json['operation'] #json means 
+    operation = request.json['operation'] #requesting in the form of jasonjson means 
     num1 = request.json['num1']
     num2 = request.json['num2']
 
@@ -26,7 +27,7 @@ def math_operator():
         result = int(num1) * int(num2)
     else:
         result = int(num1) / int(num2)
-    return jsonify(result)
+    return "The operation is {} and the result is {}". format(operation, result)
 
 
 print(__name__)
